@@ -3,10 +3,12 @@ let notes = require('../db/db.json')
 const fs = require('fs');
 const path = require('path')
 
+// Gets saved notes
 router.get('/notes', (req, res) => {
    res.json(notes)
 })
 
+// Create note 
 router.post('/notes', (req, res) => {
    let noteArray = notes;
 
@@ -31,6 +33,7 @@ router.post('/notes', (req, res) => {
    fs.writeFileSync(path.join(__dirname, '../db/db.json'), JSON.stringify(noteArray));
  });
 
+ // Delete note   
  router.delete('/notes/:id', (req, res) => {
    let noteArray = notes;
 
